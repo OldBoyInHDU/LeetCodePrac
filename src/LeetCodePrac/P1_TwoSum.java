@@ -14,25 +14,27 @@ package LeetCodePrac;
 // Related Topics 数组 哈希表
 
 
+public class P1_TwoSum {
 
-//leetcode submit region begin(Prohibit modification and deletion)
-class Solution {
-    public int[] twoSum(int[] nums, int target) {
-        int[] pos = new int[2];
-        //先target 减去第一个num1 得到num2
-        //遍历num2是否等于剩下的数，有就记录位置，没有就下一个
-        for ( int i = 0; i < nums.length; i++ ) {
-            int tempNum = target - nums[i];
-            for ( int j = i + 1; j < nums.length; j++ ) {
-                if ( tempNum == nums[j] ) {
-                    pos[0] = i;
-                    pos[1] = j;
-                    break;
+    //leetcode submit region begin(Prohibit modification and deletion)
+    class Solution {
+        public int[] twoSum(int[] nums, int target) {
+            int[] pos = new int[2];
+            //先target 减去第一个num1 得到num2
+            //遍历num2是否等于剩下的数，有就记录位置，没有就下一个
+            for (int i = 0; i < nums.length; i++) {
+                int tempNum = target - nums[i];
+                for (int j = i + 1; j < nums.length; j++) {
+                    if (tempNum == nums[j]) {
+                        pos[0] = i;
+                        pos[1] = j;
+                        break;
+                    }
                 }
             }
+            return pos;
         }
-        return pos;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
+}
