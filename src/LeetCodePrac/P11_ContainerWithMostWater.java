@@ -23,12 +23,29 @@ public class P11_ContainerWithMostWater {
     class Solution {
         public int maxArea(int[] height) {
             //暴力枚举：
-            int max = 0;
+            /*int max = 0;
             for(int i = 0; i < height.length - 1; i++) {
                 for(int j = i + 1; j < height.length; j++) {
-                    int heigh_vertical = height[i] < height[j]?height[i]:height[j];
-                    int containValue = (j - i) * heigh_vertical;
+                    int height_vertical = height[i] < height[j]?height[i]:height[j];
+                    int containValue = (j - i) * height_vertical;
                     if(containValue > max) max = containValue;
+                }
+            }
+            return max;*/
+
+            //双指针从最外，逐步向内收敛
+            int i = 0;
+            int j = height.length - 1;
+            int max = 0;
+            while(i < j) {
+                if(height[i] < height[j]) {
+                    int containValue = (j - i) * height[i];
+                    max = Math.max(max, containValue);
+                    i++;
+                } else {
+                    int containValue = (j - i) * height[j];
+                    max = Math.max(max, containValue);
+                    j--;
                 }
             }
             return max;
