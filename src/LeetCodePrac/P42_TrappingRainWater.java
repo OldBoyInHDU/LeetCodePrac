@@ -16,7 +16,7 @@ public class P42_TrappingRainWater {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public int trap(int[] height) {
-            //按列求水，只有当前列的高度大于左右两边的最高列才行。
+            //按列求水，只有当前列的高度小于左右两边的最高列才行。
             int sum = 0;
             //最左列肯定不会有水
             for(int i = 1; i < height.length; i++) {
