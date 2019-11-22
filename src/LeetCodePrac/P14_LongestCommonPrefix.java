@@ -28,7 +28,7 @@ public class P14_LongestCommonPrefix {
     //leetcode submit region begin(Prohibit modification and deletion)
     class Solution {
         public String longestCommonPrefix(String[] strs) {
-            //每次取第一个元素的0-i的子字符串作为比较前缀
+            /*//每次取第一个元素的0-i的子字符串作为比较前缀
             //startswith(prefix)
             if (strs.length == 0) return "";
             if ("".equals(strs[0])) return "";
@@ -51,7 +51,24 @@ public class P14_LongestCommonPrefix {
 
                 i++;
             }
-            return prefix;
+            return prefix;*/
+
+            //方式二，将数组的第一个元素作为最长公共前缀
+            //遍历后面的字符串，两两比较，找出公共前缀。
+            //如果ans为""，说明不存在公共前缀，直接返回
+            if (strs.length == 0) return "";
+            String ans = strs[0];
+            for (int i = 1; i < strs.length; i++) {
+                int j = 0;
+                for (; j < ans.length() && j < strs[i].length(); j++) {
+                    if (ans.charAt(j) != strs[i].charAt(j)) break;
+                }
+                ans.substring(0, j);
+                if ("".equals(ans)) {
+                    return ans;
+                }
+            }
+            return ans;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
