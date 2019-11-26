@@ -37,7 +37,7 @@ public class P35_SearchInsertPosition {
         public int searchInsert(int[] nums, int target) {
             //暴力法
             //遍历所有，如果有
-            int index = -1;
+            /*int index = -1;
             for (int i = 0; i < nums.length; i++) {
                 if (target == nums[i]) {
                     index = i;
@@ -54,7 +54,22 @@ public class P35_SearchInsertPosition {
                     break;
                 }
             }
-            return index;
+            return index;*/
+
+            //二分查找
+            int left = 0;
+            int right = nums.length - 1;
+            while (left <= right) {
+                int mid = (left + right) / 2;
+                if (target == nums[mid]) {
+                    return mid;
+                } else if (target > nums[mid]) {
+                    left = mid + 1;
+                } else {
+                    right = mid - 1;
+                }
+            }
+            return left;
         }
     }
 //leetcode submit region end(Prohibit modification and deletion)
